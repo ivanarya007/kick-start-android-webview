@@ -13,6 +13,6 @@ package com.frogobox.webview
 
 object ConfigApp {
 
-    const val URL_LINK_WEBSITE = "https://github.com/amirisback"
+    const val URL_LINK_WEBSITE = "https://chat.forefront.ai/"
 
 }
