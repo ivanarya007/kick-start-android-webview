@@ -62,7 +62,7 @@ jobs:
       # Create Git tag
       - name: Set Git configuration
         run: |
-          git config --global user.email "https://github.com/ivanarya007/kick-start-android-webview"
+          git config --global user.email "https://github.com/ivanarya007"
           git config --global user.name ""
 
       - name: Create Git tag
