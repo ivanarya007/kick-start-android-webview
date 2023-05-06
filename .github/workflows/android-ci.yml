@@ -58,14 +58,3 @@ jobs:
       # Noted for main module build [main_project_module]:bundleRelease
       - name: Build app bundle release (AAB) - ${{ env.main_project_module }} module
         run: ./gradlew ${{ env.main_project_module }}:bundleRelease
-
-      # Create Git tag
-      - name: Set Git configuration
-        run: |
-          git config --global user.email "https://github.com"
-          git config --global user.name ""
-
-      - name: Create Git tag
-        run: |
-          git tag -a v$(date +'%Y-%m-%d') -m "Version $(date +'%Y-%m-%d')"
-          git push origin v$(date +'%Y-%m-%d')
