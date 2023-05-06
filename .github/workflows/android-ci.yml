@@ -60,8 +60,12 @@ jobs:
         run: ./gradlew ${{ env.main_project_module }}:bundleRelease
 
       # Create Git tag
-      - name: Create Git tag
-        if: success()
+      - name: Set Git configuration
         run: |
-          git tag -a v${{ env.date_today }} -m "Version ${{ env.date_today }}"
-          git push origin v${{ env.date_today }}
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+
+      - name: Create Git tag
+        run: |
+          git tag -a v$(date +'%Y-%m-%d') -m "Version $(date +'%Y-%m-%d')"
+          git push origin v$(date +'%Y-%m-%d')
