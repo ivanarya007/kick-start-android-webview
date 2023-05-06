@@ -58,3 +58,20 @@ jobs:
       # Noted for main module build [main_project_module]:bundleRelease
       - name: Build app bundle release (AAB) - ${{ env.main_project_module }} module
         run: ./gradlew ${{ env.main_project_module }}:bundleRelease
+
+      # Create Git tag
+      - name: Create Git tag
+        if: success()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git tag -a ${{ env.date_today }} -m "Auto-generated tag from CI build"
+          git push origin ${{ env.date_today }}
+
+      # Upload app to repository folder
+      - name: Upload app to repository folder
+        if: success()
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: app/build/outputs/apk/debug/app-debug.apk
